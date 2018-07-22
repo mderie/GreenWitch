@@ -379,6 +379,12 @@
     <ClCompile Include="..\..\Source\Main.cpp">
       <Filter>GreenWitch\Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\CommonStuffs.cpp">
+      <Filter>GreenWitch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ConfigurationFiles.cpp">
+      <Filter>GreenWitch</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\library\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.cpp">
       <Filter>JUCE Modules\juce_audio_basics\buffers</Filter>
     </ClCompile>
@@ -2192,6 +2198,12 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\MainComponent.h">
       <Filter>GreenWitch\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\CommonStuffs.hpp">
+      <Filter>GreenWitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ConfigurationFiles.hpp">
+      <Filter>GreenWitch</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\library\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h">
       <Filter>JUCE Modules\juce_audio_basics\audio_play_head</Filter>

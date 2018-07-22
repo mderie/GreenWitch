@@ -66,7 +66,7 @@ public:
                                                     DocumentWindow::allButtons)
         {
             setUsingNativeTitleBar (true);
-            setContentOwned (new MainComponent(), true);
+            setContentOwned (new MainComponent(), true); // Technically speaking we don't need to inherit from an AudioApp... We just deal with MIDI
             setResizable (true, true);
 
             centreWithSize (getWidth(), getHeight());
