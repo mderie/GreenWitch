@@ -8462,17 +8462,18 @@
 
 1525942771 /home/sam/library/JUCE/modules/juce_video/native/juce_android_CameraDevice.h
 
-1532197004 source:/home/sam/laboratory/GreenWitch/Source/CommonStuffs.cpp
+1532362291 source:/home/sam/laboratory/GreenWitch/Source/CommonStuffs.cpp
 	"CommonStuffs.hpp"
 	"ConfigurationFiles.hpp"
 	<algorithm>
 	<iostream>
 	<ctime>
 	<sstream>
+	<cstdarg>
 	<direct.h>
 	<unistd.h>
 
-1532197004 /home/sam/laboratory/GreenWitch/Source/CommonStuffs.hpp
+1532362239 /home/sam/laboratory/GreenWitch/Source/CommonStuffs.hpp
 	<string>
 	<vector>
 	<ciso646>
@@ -8509,10 +8510,10 @@
 	<juce_opengl/juce_opengl.h>
 	<juce_video/juce_video.h>
 
-1532253450 /home/sam/laboratory/GreenWitch/Source/MainComponent.h
+1532255588 /home/sam/laboratory/GreenWitch/Source/MainComponent.h
 	"../JuceLibraryCode/JuceHeader.h"
 
-1532202666 source:/home/sam/laboratory/GreenWitch/Source/MainComponent.cpp
+1532362134 source:/home/sam/laboratory/GreenWitch/Source/MainComponent.cpp
 	"MainComponent.h"
 	"ConfigurationFiles.hpp"
 	"CommonStuffs.hpp"

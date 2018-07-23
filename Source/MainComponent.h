@@ -51,13 +51,17 @@ private:
     //==============================================================================
     // Your private member variables go here...
 
+    bool flow = false;
+
     TextButton btnStart, btnStop, btnClose;
     Label lblMidiInDevices, lblMidiOutDevices;
     ComboBox cboMidiInDevices, cboMidiOutDevices;
     //MidiDeviceModel mdmInputs, mdmOutputs;
-    void getAllMidiDevices();
+
 	MidiInput* midiInput = nullptr;
 	MidiOutput* midiOutput = nullptr;
+
+	void getAllMidiDevices();
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

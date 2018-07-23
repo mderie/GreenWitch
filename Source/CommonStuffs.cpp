@@ -6,6 +6,7 @@
 #include <iostream>
 #include <ctime>
 #include <sstream>
+#include <cstdarg>
 
 // C++17 only : defined in the upcoming C++ 17 standard
 // #include <filesystem>
@@ -98,6 +99,17 @@ std::vector<std::string> split(const std::string& str, const std::string& delimi
     // To get the last substring (or only, if delimiter is not found)
     result.push_back(str.substr(prev));
     return result;
+}
+
+// Source : https://stackoverflow.com/questions/150543/forward-an-invocation-of-a-variadic-function-in-c
+void logThis2(char *format, Target t, ...)
+{
+	char s[512]; // char[512] s; is ok in C# :)
+	va_list args;
+	va_start(args, format);
+	vsnprintf(s, sizeof(s), format, args);
+	logThis(s, t);
+	va_end(args);
 }
 
 void logThis(const char *s, Target t)

@@ -34,7 +34,8 @@ void MidiDeviceModel::paintListBoxItem(int rowNumber, Graphics &g, int width, in
 }
 */
 
-ConfigurationFile cf(appendPath({ runningFolder(), "GreenWitch.ini" }));
+// Needed ?
+//ConfigurationFile cf(appendPath({ runningFolder(), "GreenWitch.ini" }));
 
 //==============================================================================
 MainComponent::MainComponent()
@@ -162,15 +163,25 @@ void MainComponent::buttonClicked(Button *sender)
 	{
 		JUCEApplication::getInstance()->systemRequestedQuit();
 	}
-	else if (sender == &btnStart)
+	else if ((sender == &btnStart) && (midiInput != nullptr) && (midiOutput != nullptr))
 	{
 		btnStop.setEnabled(true);
 		btnStart.setEnabled(false);
+		cboMidiInDevices.setEnabled(false);
+		cboMidiOutDevices.setEnabled(false);
+		logThis("Flow on", Target::misc);
+		flow = true;
+		midiInput->start();
 	}
 	else if (sender == &btnStop)
 	{
 		btnStop.setEnabled(false);
 		btnStart.setEnabled(true);
+		cboMidiInDevices.setEnabled(true);
+		cboMidiOutDevices.setEnabled(true);
+		logThis("Flow off", Target::misc);
+		flow = false;
+		midiInput->stop();
 	}
 }
 
@@ -216,6 +227,14 @@ void MainComponent::handleIncomingMidiMessage(juce::MidiInput* source, const juc
 	{
 		s = intToStr(static_cast<int>(*(p + i)));
 		logThis(s.c_str(), Target::midi);
+	}
+	logThis2("channel = %d", Target::midi, message.getChannel());
+	//logThis("channel = ...", Target::midi, Target::midi);
+	//logThis((intToStr(message.getChannel())).c_str(), Target::midi);
+
+	if (flow && midiOutput)
+	{
+		midiOutput->sendMessageNow(message); // I assume here that we are sending multichannel too...
 	}
 }
 
