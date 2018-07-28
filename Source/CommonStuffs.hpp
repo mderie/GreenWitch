@@ -29,7 +29,7 @@ std::string stringUpper(const std::string& s);
 void join(std::string& dest, const std::string& item, const std::string& delimiter); // Little string accumulator helper
 std::vector<std::string> split(const std::string& str, const std::string& delimiter); // Almost the opposite :)
 void logThis(const char *s, Target t);
-void logThis2(char *format, Target t, ...);
+void logThis2(const char *format, Target t, ...);
 std::string appendPath(const std::vector<std::string>& pieces);
 
 #endif // COMMON_STUFFS

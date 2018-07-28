@@ -148,10 +148,10 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\MainComponent.cpp"/>
-    <ClCompile Include="..\..\Source\Main.cpp"/>
     <ClCompile Include="..\..\Source\CommonStuffs.cpp"/>
     <ClCompile Include="..\..\Source\ConfigurationFiles.cpp"/>
+    <ClCompile Include="..\..\Source\MainComponent.cpp"/>
+    <ClCompile Include="..\..\Source\Main.cpp"/>
     <ClCompile Include="..\..\..\..\library\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -1799,6 +1799,7 @@
     <ClCompile Include="..\..\..\..\library\JUCE\modules\juce_video\juce_video.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp"/>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_basics.cpp"/>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_devices.cpp"/>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_formats.cpp"/>
@@ -1815,9 +1816,9 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_video.cpp"/>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\MainComponent.h"/>
     <ClInclude Include="..\..\Source\CommonStuffs.hpp"/>
     <ClInclude Include="..\..\Source\ConfigurationFiles.hpp"/>
+    <ClInclude Include="..\..\Source\MainComponent.h"/>
     <ClInclude Include="..\..\..\..\library\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h"/>
     <ClInclude Include="..\..\..\..\library\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.h"/>
     <ClInclude Include="..\..\..\..\library\JUCE\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h"/>
@@ -2438,9 +2439,11 @@
     <ClInclude Include="..\..\..\..\library\JUCE\modules\juce_video\playback\juce_VideoComponent.h"/>
     <ClInclude Include="..\..\..\..\library\JUCE\modules\juce_video\juce_video.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Resources\background.jpg"/>
     <None Include="..\..\..\..\library\JUCE\modules\juce_audio_formats\codecs\flac\Flac Licence.txt"/>
     <None Include="..\..\..\..\library\JUCE\modules\juce_audio_formats\codecs\oggvorbis\Ogg Vorbis Licence.txt"/>
     <None Include="..\..\..\..\library\JUCE\modules\juce_graphics\image_formats\jpglib\changes to libjpeg for JUCE.txt"/>

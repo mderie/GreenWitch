@@ -98,20 +98,6 @@
       <Add option="-Wno-strict-overflow"/>
     </Compiler>
     <Linker/>
-    <Unit filename="../../Source/MainComponent.h">
-      <Option target="App | Debug"/>
-      <Option target="App | Release"/>
-      <Option compile="0"/>
-      <Option link="0"/>
-    </Unit>
-    <Unit filename="../../Source/MainComponent.cpp">
-      <Option target="App | Debug"/>
-      <Option target="App | Release"/>
-    </Unit>
-    <Unit filename="../../Source/Main.cpp">
-      <Option target="App | Debug"/>
-      <Option target="App | Release"/>
-    </Unit>
     <Unit filename="../../Source/CommonStuffs.cpp">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
@@ -127,6 +113,26 @@
       <Option target="App | Release"/>
     </Unit>
     <Unit filename="../../Source/ConfigurationFiles.hpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../Source/MainComponent.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../Source/MainComponent.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+    </Unit>
+    <Unit filename="../../Source/Main.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+    </Unit>
+    <Unit filename="../../Resources/background.jpg">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>
@@ -7411,6 +7417,16 @@
       <Option link="0"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/AppConfig.h">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/BinaryData.cpp">
+      <Option target="App | Debug"/>
+      <Option target="App | Release"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/BinaryData.h">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>

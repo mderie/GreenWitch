@@ -8462,7 +8462,7 @@
 
 1525942771 /home/sam/library/JUCE/modules/juce_video/native/juce_android_CameraDevice.h
 
-1532362291 source:/home/sam/laboratory/GreenWitch/Source/CommonStuffs.cpp
+1532627181 source:/home/sam/laboratory/GreenWitch/Source/CommonStuffs.cpp
 	"CommonStuffs.hpp"
 	"ConfigurationFiles.hpp"
 	<algorithm>
@@ -8473,17 +8473,17 @@
 	<direct.h>
 	<unistd.h>
 
-1532362239 /home/sam/laboratory/GreenWitch/Source/CommonStuffs.hpp
+1532627181 /home/sam/laboratory/GreenWitch/Source/CommonStuffs.hpp
 	<string>
 	<vector>
 	<ciso646>
 
-1532197126 /home/sam/laboratory/GreenWitch/Source/ConfigurationFiles.hpp
+1532627181 /home/sam/laboratory/GreenWitch/Source/ConfigurationFiles.hpp
 	<string>
 	<map>
 	<vector>
 
-1532197199 source:/home/sam/laboratory/GreenWitch/Source/ConfigurationFiles.cpp
+1532627181 source:/home/sam/laboratory/GreenWitch/Source/ConfigurationFiles.cpp
 	<iostream>
 	<fstream>
 	"ConfigurationFiles.hpp"
@@ -8493,7 +8493,7 @@
 	"../JuceLibraryCode/JuceHeader.h"
 	"MainComponent.h"
 
-1532186889 /home/sam/laboratory/GreenWitch/JuceLibraryCode/JuceHeader.h
+1532626864 /home/sam/laboratory/GreenWitch/JuceLibraryCode/JuceHeader.h
 	"AppConfig.h"
 	<juce_audio_basics/juce_audio_basics.h>
 	<juce_audio_devices/juce_audio_devices.h>
@@ -8509,12 +8509,17 @@
 	<juce_gui_extra/juce_gui_extra.h>
 	<juce_opengl/juce_opengl.h>
 	<juce_video/juce_video.h>
+	"BinaryData.h"
 
-1532255588 /home/sam/laboratory/GreenWitch/Source/MainComponent.h
+1532621572 /home/sam/laboratory/GreenWitch/Source/MainComponent.h
 	"../JuceLibraryCode/JuceHeader.h"
 
-1532362134 source:/home/sam/laboratory/GreenWitch/Source/MainComponent.cpp
+1532542932 source:/home/sam/laboratory/GreenWitch/Source/MainComponent.cpp
 	"MainComponent.h"
 	"ConfigurationFiles.hpp"
 	"CommonStuffs.hpp"
+
+1532626864 /home/sam/laboratory/GreenWitch/JuceLibraryCode/BinaryData.h
+
+1532626864 source:/home/sam/laboratory/GreenWitch/JuceLibraryCode/BinaryData.cpp
 

@@ -3,19 +3,20 @@
 <JUCERPROJECT id="OijVZb" name="GreenWitch" projectType="guiapp" jucerVersion="5.3.2">
   <MAINGROUP id="Z8GtAB" name="GreenWitch">
     <GROUP id="{255422EE-D061-8D15-52B3-24CBA5F1BD13}" name="Source">
+      <FILE id="dVYpaV" name="CommonStuffs.cpp" compile="1" resource="0"
+            file="Source/CommonStuffs.cpp"/>
+      <FILE id="gKPwj8" name="CommonStuffs.hpp" compile="0" resource="0"
+            file="Source/CommonStuffs.hpp"/>
+      <FILE id="V8mRx6" name="ConfigurationFiles.cpp" compile="1" resource="0"
+            file="Source/ConfigurationFiles.cpp"/>
+      <FILE id="JqrNKT" name="ConfigurationFiles.hpp" compile="0" resource="0"
+            file="Source/ConfigurationFiles.hpp"/>
       <FILE id="DsLfRZ" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="hbJwz0" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
       <FILE id="FfF2jT" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
     </GROUP>
-    <FILE id="dVYpaV" name="CommonStuffs.cpp" compile="1" resource="0"
-          file="Source/CommonStuffs.cpp"/>
-    <FILE id="gKPwj8" name="CommonStuffs.hpp" compile="0" resource="0"
-          file="Source/CommonStuffs.hpp"/>
-    <FILE id="V8mRx6" name="ConfigurationFiles.cpp" compile="1" resource="0"
-          file="Source/ConfigurationFiles.cpp"/>
-    <FILE id="JqrNKT" name="ConfigurationFiles.hpp" compile="0" resource="0"
-          file="Source/ConfigurationFiles.hpp"/>
+    <FILE id="soIlES" name="background.jpg" compile="0" resource="1" file="Resources/background.jpg"/>
   </MAINGROUP>
   <EXPORTFORMATS>
     <VS2013 targetFolder="Builds/VisualStudio2013">

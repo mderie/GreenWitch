@@ -102,11 +102,13 @@ std::vector<std::string> split(const std::string& str, const std::string& delimi
 }
 
 // Source : https://stackoverflow.com/questions/150543/forward-an-invocation-of-a-variadic-function-in-c
-void logThis2(char *format, Target t, ...)
+// And also care about the last named parameter for the call to va_start :
+// https://stackoverflow.com/questions/13189365/how-to-remove-this-warning-second-parameter-of-va-start-not-last-named-argume
+void logThis2(const char *format, Target t, ...)
 {
 	char s[512]; // char[512] s; is ok in C# :)
 	va_list args;
-	va_start(args, format);
+	va_start(args, t);
 	vsnprintf(s, sizeof(s), format, args);
 	logThis(s, t);
 	va_end(args);

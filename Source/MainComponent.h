@@ -27,7 +27,8 @@ public:
     This component lives inside our window, and this is where you should put all
     your controls and content.
 */
-class MainComponent : public AudioAppComponent, public Button::Listener, public ComboBox::Listener, public juce::MidiInputCallback
+class MainComponent : public AudioAppComponent, public juce::MidiInputCallback,
+	public ComboBox::Listener, public Button::Listener, public TextEditor::Listener //TODO: Check if we need the last one !
 {
 public:
     virtual void buttonClicked(Button *sender) override;
@@ -51,15 +52,20 @@ private:
     //==============================================================================
     // Your private member variables go here...
 
-    bool flow = false;
+    bool m_flow = false;
 
-    TextButton btnStart, btnStop, btnClose;
-    Label lblMidiInDevices, lblMidiOutDevices;
+    TextButton btnStart, btnStop, btnSetupSynth, btnClose;
+    Label lblMidiInDevices, lblMidiOutDevices, lblInput, lblOutput, lblDimension, lblD1, lblD2, lblD3, lblD4, lblD5;
+    TextEditor txtD1InputCC, txtD1InputMin, txtD1InputMax, txtD1OutputCC, txtD1OutputMin, txtD1OutputMax;
+    TextEditor txtD2InputCC, txtD2InputMin, txtD2InputMax, txtD2OutputCC, txtD2OutputMin, txtD2OutputMax;
+    TextEditor txtD3InputCC, txtD3InputMin, txtD3InputMax, txtD3OutputCC, txtD3OutputMin, txtD3OutputMax;
+    TextEditor txtD4InputCC, txtD4InputMin, txtD4InputMax, txtD4OutputCC, txtD4OutputMin, txtD4OutputMax;
+    TextEditor txtD5InputCC, txtD5InputMin, txtD5InputMax, txtD5OutputCC, txtD5OutputMin, txtD5OutputMax;
     ComboBox cboMidiInDevices, cboMidiOutDevices;
     //MidiDeviceModel mdmInputs, mdmOutputs;
 
-	MidiInput* midiInput = nullptr;
-	MidiOutput* midiOutput = nullptr;
+	MidiInput* m_midiInput = nullptr;
+	MidiOutput* m_midiOutput = nullptr;
 
 	void getAllMidiDevices();
 
