@@ -55,7 +55,10 @@ private:
     bool m_flow = false;
 
     TextButton btnStart, btnStop, btnSetupSynth, btnClose;
-    Label lblMidiInDevices, lblMidiOutDevices, lblInput, lblOutput, lblDimension, lblD1, lblD2, lblD3, lblD4, lblD5;
+    Label lblMidiInDevices, lblMidiOutDevices, lblDimension, lblD1, lblD2, lblD3, lblD4, lblD5;
+    Label lblInput, lblOutput, lblInputCC, lblInputMinCC, lblInputMaxCC, lblOutputCC, lblOutputMinCC, lblOutputMaxCC;
+    // Input CC ==> Midi event "kind", min & max for the acceptable range
+    // Output CC ==> eventual mapping, min & max for the target range
     TextEditor txtD1InputCC, txtD1InputMin, txtD1InputMax, txtD1OutputCC, txtD1OutputMin, txtD1OutputMax;
     TextEditor txtD2InputCC, txtD2InputMin, txtD2InputMax, txtD2OutputCC, txtD2OutputMin, txtD2OutputMax;
     TextEditor txtD3InputCC, txtD3InputMin, txtD3InputMax, txtD3OutputCC, txtD3OutputMin, txtD3OutputMax;

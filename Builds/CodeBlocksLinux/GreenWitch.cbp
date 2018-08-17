@@ -132,7 +132,7 @@
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
     </Unit>
-    <Unit filename="../../Resources/background.jpg">
+    <Unit filename="../../Resources/background.gif">
       <Option target="App | Debug"/>
       <Option target="App | Release"/>
       <Option compile="0"/>

@@ -87,11 +87,102 @@ MainComponent::MainComponent()
     lblD3.setText("D3", NotificationType::dontSendNotification);
     lblD4.setText("D4", NotificationType::dontSendNotification);
     lblD5.setText("D5", NotificationType::dontSendNotification);
+
     addAndMakeVisible(lblD1);
     addAndMakeVisible(lblD2);
     addAndMakeVisible(lblD3);
     addAndMakeVisible(lblD4);
     addAndMakeVisible(lblD5);
+
+    lblInputCC.setText("CC", NotificationType::dontSendNotification);
+    addAndMakeVisible(lblInputCC);
+    lblInputMinCC.setText("Min", NotificationType::dontSendNotification);
+    addAndMakeVisible(lblInputMinCC);
+    lblInputMaxCC.setText("Max", NotificationType::dontSendNotification);
+    addAndMakeVisible(lblInputMaxCC);
+    lblOutputCC.setText("CC", NotificationType::dontSendNotification);
+    addAndMakeVisible(lblOutputCC);
+    lblOutputMinCC.setText("Min", NotificationType::dontSendNotification);
+    addAndMakeVisible(lblOutputMinCC);
+    lblOutputMaxCC.setText("Max", NotificationType::dontSendNotification);
+    addAndMakeVisible(lblOutputMaxCC);
+
+    String filePath = File::getCurrentWorkingDirectory().getFullPathName();
+    ConfigurationFile cf(filePath.toStdString() + "/GreenWitch.ini"); //TODO: Do something multiplatform about this slash...
+
+    //txtD1InputCC.setText("Ahu", false);
+    txtD1InputCC.setText(cf.keyValue("mapping", "D1CC"), false);
+    txtD1InputCC.addListener(this);
+    addAndMakeVisible(txtD1InputCC);
+    txtD1InputMin.addListener(this);
+    addAndMakeVisible(txtD1InputMin);
+    txtD1InputMax.addListener(this);
+    addAndMakeVisible(txtD1InputMax);
+	txtD1OutputCC.addListener(this);
+	addAndMakeVisible(txtD1OutputCC);
+    txtD1OutputMin.addListener(this);
+    addAndMakeVisible(txtD1OutputMin);
+    txtD1OutputMax.addListener(this);
+    addAndMakeVisible(txtD1OutputMax);
+
+    txtD2InputCC.addListener(this);
+    addAndMakeVisible(txtD2InputCC);
+    txtD2InputMin.addListener(this);
+    addAndMakeVisible(txtD2InputMin);
+    txtD2InputMax.addListener(this);
+    addAndMakeVisible(txtD2InputMax);
+	txtD2OutputCC.addListener(this);
+	addAndMakeVisible(txtD2OutputCC);
+    txtD2OutputMin.addListener(this);
+    addAndMakeVisible(txtD2OutputMin);
+    txtD2OutputMax.addListener(this);
+    addAndMakeVisible(txtD2OutputMax);
+
+	txtD3InputCC.addListener(this);
+    addAndMakeVisible(txtD3InputCC);
+    txtD3InputMin.addListener(this);
+    addAndMakeVisible(txtD3InputMin);
+    txtD3InputMax.addListener(this);
+    addAndMakeVisible(txtD3InputMax);
+	txtD3OutputCC.addListener(this);
+	addAndMakeVisible(txtD3OutputCC);
+    txtD3OutputMin.addListener(this);
+    addAndMakeVisible(txtD3OutputMin);
+    txtD3OutputMax.addListener(this);
+    addAndMakeVisible(txtD3OutputMax);
+
+	txtD4InputCC.addListener(this);
+    addAndMakeVisible(txtD4InputCC);
+    txtD4InputMin.addListener(this);
+    addAndMakeVisible(txtD4InputMin);
+    txtD4InputMax.addListener(this);
+    addAndMakeVisible(txtD4InputMax);
+	txtD4OutputCC.addListener(this);
+	addAndMakeVisible(txtD4OutputCC);
+    txtD4OutputMin.addListener(this);
+    addAndMakeVisible(txtD4OutputMin);
+    txtD4OutputMax.addListener(this);
+    addAndMakeVisible(txtD4OutputMax);
+
+    txtD5InputCC.addListener(this);
+    addAndMakeVisible(txtD5InputCC);
+    txtD5InputMin.addListener(this);
+    addAndMakeVisible(txtD5InputMin);
+    txtD5InputMax.addListener(this);
+    addAndMakeVisible(txtD5InputMax);
+	txtD5OutputCC.addListener(this);
+	addAndMakeVisible(txtD5OutputCC);
+    txtD5OutputMin.addListener(this);
+    addAndMakeVisible(txtD5OutputMin);
+    txtD5OutputMax.addListener(this);
+    addAndMakeVisible(txtD5OutputMax);
+
+    lblDimension.setText("Dimension", NotificationType::dontSendNotification);
+    addAndMakeVisible(lblDimension);
+    lblInput.setText("Input", NotificationType::dontSendNotification);
+    addAndMakeVisible(lblInput);
+	lblOutput.setText("Output", NotificationType::dontSendNotification);
+	addAndMakeVisible(lblOutput);
 
     // Doesn't work as expected
     //resized();
@@ -156,7 +247,7 @@ void MainComponent::paint (Graphics& g)
 
     // You can add your drawing code here!
 
-    Image background = juce::ImageCache::getFromMemory(BinaryData::background_jpg, 21966);
+    Image background = juce::ImageCache::getFromMemory(BinaryData::background_gif, 61925);
     g.drawImageAt(background, 0, 0); // 446 * 502 Use Pinta
 }
 
@@ -185,17 +276,58 @@ void MainComponent::resized()
 
     btnSetupSynth.setBounds(20, 100, getWidth() - 40, 20);
 
-    lblDimension.setBounds(20,20,40,20);
-    //lblInput
-    //lblOutput
+    lblInput.setBounds(40, 160, 80, 20);
+	lblDimension.setBounds(180,160, 80, 20);
+	lblOutput.setBounds(320, 160, 80, 20);
 
-    lblD1.setBounds(20,20,40,20);
-    lblD2.setBounds(20,20,40,20);
-    lblD3.setBounds(20,20,40,20);
-    lblD4.setBounds(20,20,40,20);
-    lblD5.setBounds(20,20,40,20);
+	lblInputCC.setBounds(20, 180, 40, 20);
+	lblInputMinCC.setBounds(80, 180, 40, 20);
+	lblInputMaxCC.setBounds(140, 180, 40, 20);
+	lblOutputCC.setBounds(260, 180, 40, 20);
+	lblOutputMinCC.setBounds(320, 180, 40, 20);
+	lblOutputMaxCC.setBounds(380, 180, 40, 20);
 
+    lblD1.setBounds(200, 200, 40, 20);
+    lblD2.setBounds(200, 220, 40, 20);
+    lblD3.setBounds(200, 240, 40, 20);
+    lblD4.setBounds(200, 260, 40, 20);
+    lblD5.setBounds(200, 280, 40, 20);
 
+    txtD1InputCC.setBounds(20, 200, 40, 20);
+    txtD2InputCC.setBounds(20, 220, 40, 20);
+    txtD3InputCC.setBounds(20, 240, 40, 20);
+    txtD4InputCC.setBounds(20, 260, 40, 20);
+    txtD5InputCC.setBounds(20, 280, 40, 20);
+
+    txtD1InputMin.setBounds(80, 200, 40, 20);
+    txtD2InputMin.setBounds(80, 220, 40, 20);
+    txtD3InputMin.setBounds(80, 240, 40, 20);
+    txtD4InputMin.setBounds(80, 260, 40, 20);
+    txtD5InputMin.setBounds(80, 280, 40, 20);
+
+    txtD1InputMax.setBounds(140, 200, 40, 20);
+    txtD2InputMax.setBounds(140, 220, 40, 20);
+    txtD3InputMax.setBounds(140, 240, 40, 20);
+    txtD4InputMax.setBounds(140, 260, 40, 20);
+    txtD5InputMax.setBounds(140, 280, 40, 20);
+
+    txtD1OutputCC.setBounds(260, 200, 40, 20);
+    txtD2OutputCC.setBounds(260, 220, 40, 20);
+    txtD3OutputCC.setBounds(260, 240, 40, 20);
+    txtD4OutputCC.setBounds(260, 260, 40, 20);
+    txtD5OutputCC.setBounds(260, 280, 40, 20);
+
+    txtD1OutputMin.setBounds(320, 200, 40, 20);
+    txtD2OutputMin.setBounds(320, 220, 40, 20);
+    txtD3OutputMin.setBounds(320, 240, 40, 20);
+    txtD4OutputMin.setBounds(320, 260, 40, 20);
+    txtD5OutputMin.setBounds(320, 280, 40, 20);
+
+    txtD1OutputMax.setBounds(380, 200, 40, 20);
+    txtD2OutputMax.setBounds(380, 220, 40, 20);
+    txtD3OutputMax.setBounds(380, 240, 40, 20);
+    txtD4OutputMax.setBounds(380, 260, 40, 20);
+    txtD5OutputMax.setBounds(380, 280, 40, 20);
 }
 
 void MainComponent::buttonClicked(Button *sender)

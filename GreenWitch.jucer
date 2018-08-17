@@ -16,7 +16,7 @@
             file="Source/MainComponent.cpp"/>
       <FILE id="FfF2jT" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
     </GROUP>
-    <FILE id="soIlES" name="background.jpg" compile="0" resource="1" file="Resources/background.jpg"/>
+    <FILE id="JDjbGM" name="background.gif" compile="0" resource="1" file="Resources/background.gif"/>
   </MAINGROUP>
   <EXPORTFORMATS>
     <VS2013 targetFolder="Builds/VisualStudio2013">

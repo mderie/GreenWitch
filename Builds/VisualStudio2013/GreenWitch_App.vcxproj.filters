@@ -4076,7 +4076,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Resources\background.jpg">
+    <None Include="..\..\Resources\background.gif">
       <Filter>GreenWitch</Filter>
     </None>
     <None Include="..\..\..\..\library\JUCE\modules\juce_audio_formats\codecs\flac\Flac Licence.txt">

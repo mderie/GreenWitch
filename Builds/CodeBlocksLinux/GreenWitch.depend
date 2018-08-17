@@ -8462,7 +8462,7 @@
 
 1525942771 /home/sam/library/JUCE/modules/juce_video/native/juce_android_CameraDevice.h
 
-1532627181 source:/home/sam/laboratory/GreenWitch/Source/CommonStuffs.cpp
+1532873413 source:/home/sam/laboratory/GreenWitch/Source/CommonStuffs.cpp
 	"CommonStuffs.hpp"
 	"ConfigurationFiles.hpp"
 	<algorithm>
@@ -8483,13 +8483,13 @@
 	<map>
 	<vector>
 
-1532627181 source:/home/sam/laboratory/GreenWitch/Source/ConfigurationFiles.cpp
+1532873470 source:/home/sam/laboratory/GreenWitch/Source/ConfigurationFiles.cpp
 	<iostream>
 	<fstream>
 	"ConfigurationFiles.hpp"
 	"CommonStuffs.hpp"
 
-1532252729 source:/home/sam/laboratory/GreenWitch/Source/Main.cpp
+1532873413 source:/home/sam/laboratory/GreenWitch/Source/Main.cpp
 	"../JuceLibraryCode/JuceHeader.h"
 	"MainComponent.h"
 
@@ -8511,7 +8511,7 @@
 	<juce_video/juce_video.h>
 	"BinaryData.h"
 
-1532621572 /home/sam/laboratory/GreenWitch/Source/MainComponent.h
+1534530785 /home/sam/laboratory/GreenWitch/Source/MainComponent.h
 	"../JuceLibraryCode/JuceHeader.h"
 
 1532542932 source:/home/sam/laboratory/GreenWitch/Source/MainComponent.cpp
@@ -8519,7 +8519,7 @@
 	"ConfigurationFiles.hpp"
 	"CommonStuffs.hpp"
 
-1532626864 /home/sam/laboratory/GreenWitch/JuceLibraryCode/BinaryData.h
+1532873416 /home/sam/laboratory/GreenWitch/JuceLibraryCode/BinaryData.h
 
-1532626864 source:/home/sam/laboratory/GreenWitch/JuceLibraryCode/BinaryData.cpp
+1532873416 source:/home/sam/laboratory/GreenWitch/JuceLibraryCode/BinaryData.cpp
 
