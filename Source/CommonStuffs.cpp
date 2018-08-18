@@ -26,6 +26,7 @@
 #endif
 
 // Can't understand why there is no shorter way to perform this conversion...
+// In C++ 2011 there is finally to_string() !!!
 std::string intToStr(int value)
 {
 	std::stringstream ss;

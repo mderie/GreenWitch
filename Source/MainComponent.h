@@ -22,6 +22,8 @@ public:
 };
 */
 
+typedef unsigned char byte;
+
 //==============================================================================
 /*
     This component lives inside our window, and this is where you should put all
@@ -53,6 +55,7 @@ private:
     // Your private member variables go here...
 
     bool m_flow = false;
+    std::vector<std::string> m_dimensionsOutput;
 
     TextButton btnStart, btnStop, btnSetupSynth, btnClose;
     Label lblMidiInDevices, lblMidiOutDevices, lblDimension, lblD1, lblD2, lblD3, lblD4, lblD5;
@@ -65,12 +68,17 @@ private:
     TextEditor txtD4InputCC, txtD4InputMin, txtD4InputMax, txtD4OutputCC, txtD4OutputMin, txtD4OutputMax;
     TextEditor txtD5InputCC, txtD5InputMin, txtD5InputMax, txtD5OutputCC, txtD5OutputMin, txtD5OutputMax;
     ComboBox cboMidiInDevices, cboMidiOutDevices;
+    ComboBox cboD1OutputCC, cboD2OutputCC, cboD3OutputCC, cboD4OutputCC, cboD5OutputCC;
     //MidiDeviceModel mdmInputs, mdmOutputs;
 
 	MidiInput* m_midiInput = nullptr;
 	MidiOutput* m_midiOutput = nullptr;
 
 	void getAllMidiDevices();
+	void getAllOutputDimensions();
+	juce::MidiMessage transformMidiMessage(const juce::MidiMessage& message, const byte b0, const byte b1, const byte b2);
+	byte getTextHexValue(const TextEditor &te);
+	std::string getNextToken(const std::string &token, int offset);
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

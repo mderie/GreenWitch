@@ -75,5 +75,16 @@ std::vector<std::string> ConfigurationFile::keyNames(const std::string &section)
 
 std::string ConfigurationFile::keyValue(const std::string &section, const std::string &key)
 {
-	return m_contents[section][key];
+	if (m_contents.find(section) == m_contents.end())
+	{
+		return "";
+	}
+	else if (m_contents[section].find(key) == m_contents[section].end())
+	{
+		return  "";
+	}
+	else
+	{
+		return m_contents[section][key];
+	}
 }
