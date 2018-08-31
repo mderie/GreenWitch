@@ -2,39 +2,44 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="App | Debug" />
+	<File name="../../Source/MainComponent.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="24669" topLine="675" />
+		</Cursor>
+	</File>
+	<File name="../../../../library/JUCE/modules/juce_core/maths/juce_MathsFunctions.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1400" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="../../Source/ConfigurationFiles.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="370" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="../../Source/Main.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="344" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="../../Source/MainComponent.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3322" topLine="30" />
-		</Cursor>
-	</File>
 	<File name="../../Source/ConfigurationFiles.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="40" />
+			<Cursor1 position="1973" topLine="40" />
 		</Cursor>
 	</File>
-	<File name="../../Source/CommonStuffs.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../../Source/CommonStuffs.hpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="284" topLine="0" />
+			<Cursor1 position="1019" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="../../Source/CommonStuffs.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../../Source/CommonStuffs.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="0" />
+			<Cursor1 position="3265" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="../../Source/ConfigurationFiles.hpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../../Source/MainComponent.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="370" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="../../Source/MainComponent.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="15202" topLine="418" />
+			<Cursor1 position="3743" topLine="40" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

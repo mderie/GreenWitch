@@ -64,10 +64,10 @@ ConfigurationFile::~ConfigurationFile()
 
 std::vector<std::string> ConfigurationFile::keyNames(const std::string &section)
 {
-  std::vector<std::string> result;
-  for(auto const &kvp : m_contents[section])
-  {
-    result.push_back(kvp.first);
+	std::vector<std::string> result;
+	for(auto const &kvp : m_contents[section])
+	{
+		result.push_back(kvp.first);
 	}
 
 	return result;
