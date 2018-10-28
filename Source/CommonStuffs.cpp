@@ -115,6 +115,14 @@ void logThis2(const char *format, Target t, ...)
 	va_end(args);
 }
 
+// In Rack/plugins/samlp_sandbox :
+//
+// Log formatted... Almost similar to printf :) But the "..." format string cannot be empty !-(
+// #define LOGF(s, ...) logf(stringf(s, __VA_ARGS__).c_str())
+//
+// C like simple logger
+// void logf(const char *s);
+
 void logThis(const char *s, Target t)
 {
   time_t rawtime;

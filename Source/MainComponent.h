@@ -22,7 +22,7 @@ public:
 };
 */
 
-typedef unsigned char byte;
+typedef unsigned char byte; // Same as juce::uint8
 
 //==============================================================================
 /*
@@ -55,6 +55,8 @@ private:
     // Your private member variables go here...
 
     bool m_flow = false;
+    std::string m_prelude;
+    std::string m_postlude;
     std::vector<std::string> m_dimensionsOutput;
 
     TextButton btnStart, btnStop, btnSetupSynth, btnClose;
@@ -74,11 +76,15 @@ private:
 	MidiInput* m_midiInput = nullptr;
 	MidiOutput* m_midiOutput = nullptr;
 
+	void sendMessage(const MidiMessage &msg) const;
+	void sendPrelude() const;
+	void sendPostlude() const;
 	void getAllMidiDevices();
 	void getAllOutputDimensions();
-	juce::MidiMessage transformMidiMessage(const juce::MidiMessage& message, const byte b0, const byte b1, const byte b2);
-	byte getTextHexValue(const TextEditor &te);
-	std::string getNextToken(const std::string &token, int offset);
+	byte getByte(const juce::MidiMessage &message, const int offset) const;
+	juce::MidiMessage transformMidiMessage(const juce::MidiMessage &message, const byte b0, const byte b1, const byte b2);
+	byte getTextHexValue(const TextEditor &te) const;
+	std::string getNextToken(const std::string &token, const int offset) const;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

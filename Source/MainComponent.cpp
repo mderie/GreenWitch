@@ -46,7 +46,7 @@ MainComponent::MainComponent()
 {
     // Make sure you set the size of the component after
     // you add any child components.
-    setSize(446, 502);
+    setSize(512, 512);
     // Too early Dom !
     getTopLevelComponent()->setName("Welcome to the GreenWitch project"); // No effect :(
 
@@ -87,18 +87,25 @@ MainComponent::MainComponent()
     cboMidiOutDevices.addListener(this);
     addAndMakeVisible(cboMidiOutDevices);
 
+    /*
     btnSetupSynth.setButtonText("Setup synth");
     btnSetupSynth.addListener(this);
     btnSetupSynth.setEnabled(false);
     addAndMakeVisible(btnSetupSynth);
+    */
 
 	logThis("Session start 5", Target::misc);
 
-    lblD1.setText("1", NotificationType::dontSendNotification);
-    lblD2.setText("2", NotificationType::dontSendNotification);
-    lblD3.setText("3", NotificationType::dontSendNotification);
-    lblD4.setText("4", NotificationType::dontSendNotification);
-    lblD5.setText("5", NotificationType::dontSendNotification);
+    String filePath = File::getCurrentWorkingDirectory().getFullPathName();
+    ConfigurationFile cf(filePath.toStdString() + "/GreenWitch.ini"); //TODO: Do something multiplatform about this slash...
+
+	logThis("Session start 6", Target::misc);
+
+    lblD1.setText("1 (" + cf.keyValue("mapping", "D1Label") + ")", NotificationType::dontSendNotification);
+    lblD2.setText("2 (" + cf.keyValue("mapping", "D2Label") + ")", NotificationType::dontSendNotification);
+    lblD3.setText("3 (" + cf.keyValue("mapping", "D3Label") + ")", NotificationType::dontSendNotification);
+    lblD4.setText("4 (" + cf.keyValue("mapping", "D4Label") + ")", NotificationType::dontSendNotification);
+    lblD5.setText("5 (" + cf.keyValue("mapping", "D5Label") + ")", NotificationType::dontSendNotification);
 
     addAndMakeVisible(lblD1);
     addAndMakeVisible(lblD2);
@@ -119,13 +126,10 @@ MainComponent::MainComponent()
     lblOutputMaxCC.setText("Max", NotificationType::dontSendNotification);
     addAndMakeVisible(lblOutputMaxCC);
 
-	logThis("Session start 6", Target::misc);
-
-    String filePath = File::getCurrentWorkingDirectory().getFullPathName();
-    ConfigurationFile cf(filePath.toStdString() + "/GreenWitch.ini"); //TODO: Do something multiplatform about this slash...
-	// Seems to work anyway but in case the file is not present (artt least under Win) it hangs
-
 	logThis("Session start 7", Target::misc);
+
+    m_prelude = cf.keyValue("mapping", "prelude");
+    m_postlude = cf.keyValue("mapping", "postlude");
 
     txtD1InputCC.setText(cf.keyValue("mapping", "D1CC"), false);
     txtD1InputCC.addListener(this);
@@ -229,7 +233,8 @@ MainComponent::MainComponent()
 	
 	logThis("Session start 8", Target::misc);
 
-    m_dimensionsOutput = split(cf.keyValue("mapping", "DxOutput"), ";");
+    std::string DxOutput = "Unassigned;0x00;;;" + cf.keyValue("mapping", "DxOutput");
+    m_dimensionsOutput = split(DxOutput, ";");
     logThis2("DxOutput = %s", Target::misc, cf.keyValue("mapping", "DxOutput").c_str());
     for (size_t i = 0; i < m_dimensionsOutput.size(); i++)
     {
@@ -329,9 +334,10 @@ void MainComponent::resized()
     cboMidiInDevices.setBounds((1 * 20) + (0 * comboboxWidth), 60, comboboxWidth, 20);
     cboMidiOutDevices.setBounds((2 * 20) + (1 * comboboxWidth), 60, comboboxWidth, 20);
 
-    btnSetupSynth.setBounds(20, 100, getWidth() - 40, 20);
+    // btnSetupSynth.setBounds(20, 100, getWidth() - 40, 20);
 
-    // Create a virtual midi port
+    // Care : how to create a virtual midi port... Seems to be permanent !-)
+    //
     // https://superuser.com/questions/1164838/virtual-midi-port-route-in-rasbian
     //
     // sudo modprobe snd-virmidi snd_index=1
@@ -348,11 +354,11 @@ void MainComponent::resized()
 	lblOutputMinCC.setBounds(320, 180, 40, 20);
 	lblOutputMaxCC.setBounds(380, 180, 40, 20);
 
-    lblD1.setBounds(210, 200, 40, 20);
-    lblD2.setBounds(210, 220, 40, 20);
-    lblD3.setBounds(210, 240, 40, 20);
-    lblD4.setBounds(210, 260, 40, 20);
-    lblD5.setBounds(210, 280, 40, 20);
+    lblD1.setBounds(180, 200, 80, 20);
+    lblD2.setBounds(180, 220, 80, 20);
+    lblD3.setBounds(180, 240, 80, 20);
+    lblD4.setBounds(180, 260, 80, 20);
+    lblD5.setBounds(180, 280, 80, 20);
 
     txtD1InputCC.setBounds(20, 200, 40, 20);
     txtD2InputCC.setBounds(20, 220, 40, 20);
@@ -379,23 +385,24 @@ void MainComponent::resized()
     txtD4OutputCC.setBounds(260, 260, 40, 20);
     txtD5OutputCC.setBounds(260, 280, 40, 20);
     */
-    cboD1OutputCC.setBounds(260, 200, 40, 20);
-    cboD2OutputCC.setBounds(260, 220, 40, 20);
-    cboD3OutputCC.setBounds(260, 240, 40, 20);
-    cboD4OutputCC.setBounds(260, 260, 40, 20);
-    cboD5OutputCC.setBounds(260, 280, 40, 20);
 
-    txtD1OutputMin.setBounds(320, 200, 40, 20);
-    txtD2OutputMin.setBounds(320, 220, 40, 20);
-    txtD3OutputMin.setBounds(320, 240, 40, 20);
-    txtD4OutputMin.setBounds(320, 260, 40, 20);
-    txtD5OutputMin.setBounds(320, 280, 40, 20);
+    cboD1OutputCC.setBounds(260, 200, 120, 20);
+    cboD2OutputCC.setBounds(260, 220, 120, 20);
+    cboD3OutputCC.setBounds(260, 240, 120, 20);
+    cboD4OutputCC.setBounds(260, 260, 120, 20);
+    cboD5OutputCC.setBounds(260, 280, 120, 20);
 
-    txtD1OutputMax.setBounds(380, 200, 40, 20);
-    txtD2OutputMax.setBounds(380, 220, 40, 20);
-    txtD3OutputMax.setBounds(380, 240, 40, 20);
-    txtD4OutputMax.setBounds(380, 260, 40, 20);
-    txtD5OutputMax.setBounds(380, 280, 40, 20);
+    txtD1OutputMin.setBounds(400, 200, 40, 20);
+    txtD2OutputMin.setBounds(400, 220, 40, 20);
+    txtD3OutputMin.setBounds(400, 240, 40, 20);
+    txtD4OutputMin.setBounds(400, 260, 40, 20);
+    txtD5OutputMin.setBounds(400, 280, 40, 20);
+
+    txtD1OutputMax.setBounds(460, 200, 40, 20);
+    txtD2OutputMax.setBounds(460, 220, 40, 20);
+    txtD3OutputMax.setBounds(460, 240, 40, 20);
+    txtD4OutputMax.setBounds(460, 260, 40, 20);
+    txtD5OutputMax.setBounds(460, 280, 40, 20);
 }
 
 void MainComponent::buttonClicked(Button *sender)
@@ -403,10 +410,16 @@ void MainComponent::buttonClicked(Button *sender)
 	//if (sender->getName() == "Close")
 	if (sender == &btnClose)
 	{
+		logThis("btnClose pressed", Target::misc);
+		if (btnStop.isEnabled())
+		{
+			buttonClicked(&btnStop);
+		}
 		JUCEApplication::getInstance()->systemRequestedQuit();
 	}
 	else if ((sender == &btnStart) && (m_midiInput != nullptr) && (m_midiOutput != nullptr))
 	{
+		logThis("btnStart pressed", Target::misc);
 		btnStop.setEnabled(true);
 		btnStart.setEnabled(false);
 		cboMidiInDevices.setEnabled(false);
@@ -414,10 +427,12 @@ void MainComponent::buttonClicked(Button *sender)
 		btnSetupSynth.setEnabled(false);
 		logThis("Flow on", Target::misc);
 		m_flow = true;
+		sendPrelude();
 		m_midiInput->start();
 	}
 	else if (sender == &btnStop)
 	{
+		logThis("btnStop pressed", Target::misc);
 		btnStop.setEnabled(false);
 		btnStart.setEnabled(true);
 		cboMidiInDevices.setEnabled(true);
@@ -425,8 +440,10 @@ void MainComponent::buttonClicked(Button *sender)
 		btnSetupSynth.setEnabled(true);
 		logThis("Flow off", Target::misc);
 		m_flow = false;
+		sendPostlude();
 		m_midiInput->stop();
 	}
+	/*
 	else if (sender == &btnSetupSynth)
 	{
 		//TODO: This should come from configuration file ?
@@ -437,6 +454,7 @@ void MainComponent::buttonClicked(Button *sender)
 			m_midiOutput->sendMessageNow(message);
 		}
 	}
+	*/
 }
 
 void MainComponent::comboBoxChanged(ComboBox *sender)
@@ -505,12 +523,12 @@ void MainComponent::comboBoxChanged(ComboBox *sender)
 	}
 }
 
-byte MainComponent::getTextHexValue(const TextEditor &te)
+byte MainComponent::getTextHexValue(const TextEditor &te) const
 {
 	return (stoi(te.getText().toStdString())); // New in C++ 11 :)
 }
 
-std::string MainComponent::getNextToken(const std::string &token, int offset)
+std::string MainComponent::getNextToken(const std::string &token, const int offset) const
 {
 	auto it = std::find(m_dimensionsOutput.begin(), m_dimensionsOutput.end(), token);
 	if (it == m_dimensionsOutput.end())
@@ -536,22 +554,81 @@ juce::MidiMessage MainComponent::transformMidiMessage(const juce::MidiMessage& m
 	// Can't do a switch (b1) here...
 	if (b1 == getTextHexValue(txtD1InputCC))
 	{
+		Colour previousColour = lblD1.findColour(Label::textColourId);
+		lblD1.setColour(Label::textColourId, Colour(0, 255, 0));
+		Time::waitForMillisecondCounter(5);
+		lblD1.setColour(Label::textColourId, previousColour);
+
+		if (cboD1OutputCC.getSelectedId() <= 1)
+		{
+			// We could merge those two cases...
+			return message; // Unassigned or empty !
+		}
+		else
+		{
+			byte inputMin = getTextHexValue(txtD1InputMin);
+			byte inputMax = getTextHexValue(txtD1InputMax);
+			byte outputMin = getTextHexValue(txtD1OutputMin);
+			byte outputMax = getTextHexValue(txtD1OutputMax);
+
+			logThis2("transformMidiMessage inputMin= %d, inputMax= %d, outputMin= %d & outputMax = %d", Target::midi, inputMin, inputMax, outputMin, outputMax);
+			return juce::MidiMessage(0xCC, getTextHexValue(txtD1OutputCC), (b2 * (outputMax - outputMin)) / (inputMax - inputMin));
+		}
+
 	}
 	else if (b1 == getTextHexValue(txtD2InputCC))
 	{
+		Colour previousColour = lblD2.findColour(Label::textColourId);
+		lblD1.setColour(Label::textColourId, Colour(0, 255, 0));
+		Time::waitForMillisecondCounter(5);
+
+		byte inputMin = getTextHexValue(txtD2InputMin);
+		byte inputMax = getTextHexValue(txtD2InputMax);
+		byte outputMin = getTextHexValue(txtD2OutputMin);
+		byte outputMax = getTextHexValue(txtD2OutputMax);
+		lblD2.setColour(Label::textColourId, previousColour);
+
+		return juce::MidiMessage(0xCC, getTextHexValue(txtD2OutputCC), (b2 * (outputMax - outputMin)) / (inputMax - inputMin));
 	}
 	else if (b1 == getTextHexValue(txtD3InputCC))
 	{
+		Colour previousColour = lblD3.findColour(Label::textColourId);
+		lblD1.setColour(Label::textColourId, Colour(0, 255, 0));
+		Time::waitForMillisecondCounter(5);
+
+		byte inputMin = getTextHexValue(txtD3InputMin);
+		byte inputMax = getTextHexValue(txtD3InputMax);
+		byte outputMin = getTextHexValue(txtD3OutputMin);
+		byte outputMax = getTextHexValue(txtD3OutputMax);
+		lblD3.setColour(Label::textColourId, previousColour);
+
+		return juce::MidiMessage(0xCC, getTextHexValue(txtD3OutputCC), (b2 * (outputMax - outputMin)) / (inputMax - inputMin));
 	}
 	else if (b1 == getTextHexValue(txtD4InputCC))
 	{
+		Colour previousColour = lblD4.findColour(Label::textColourId);
+		lblD1.setColour(Label::textColourId, Colour(0, 255, 0));
+		Time::waitForMillisecondCounter(5);
+
+		byte inputMin = getTextHexValue(txtD4InputMin);
+		byte inputMax = getTextHexValue(txtD4InputMax);
+		byte outputMin = getTextHexValue(txtD4OutputMin);
+		byte outputMax = getTextHexValue(txtD4OutputMax);
+		lblD4.setColour(Label::textColourId, previousColour);
+
+		return juce::MidiMessage(0xCC, getTextHexValue(txtD4OutputCC), (b2 * (outputMax - outputMin)) / (inputMax - inputMin));
 	}
 	else if (b1 == getTextHexValue(txtD5InputCC))
 	{
+		Colour previousColour = lblD5.findColour(Label::textColourId);
+		lblD1.setColour(Label::textColourId, Colour(0, 255, 0));
+		Time::waitForMillisecondCounter(5);
+
 		byte inputMin = getTextHexValue(txtD5InputMin);
 		byte inputMax = getTextHexValue(txtD5InputMax);
 		byte outputMin = getTextHexValue(txtD5OutputMin);
 		byte outputMax = getTextHexValue(txtD5OutputMax);
+		lblD5.setColour(Label::textColourId, previousColour);
 
 		return juce::MidiMessage(0xCC, getTextHexValue(txtD5OutputCC), (b2 * (outputMax - outputMin)) / (inputMax - inputMin));
 	}
@@ -565,7 +642,7 @@ void MainComponent::handleIncomingMidiMessage(juce::MidiInput* source, const juc
 	const juce::uint8* p = message.getRawData();
 	std::string s;
 	byte b0 = 0;
-	byte b1 = 0;
+	byte b1 = 0; // Now we can use getByte()... Too lazy
 	byte b2 = 0;
 
 	for (int i = 0; i < message.getRawDataSize(); i++)
@@ -586,7 +663,7 @@ void MainComponent::handleIncomingMidiMessage(juce::MidiInput* source, const juc
 		s = intToStr(static_cast<int>(*(p + i)));
 		logThis(s.c_str(), Target::midi);
 	}
-	logThis2("channel = %d", Target::midi, message.getChannel());
+
 	//logThis("channel = ...", Target::midi, Target::midi);
 	//logThis((intToStr(message.getChannel())).c_str(), Target::midi);
 
@@ -594,7 +671,45 @@ void MainComponent::handleIncomingMidiMessage(juce::MidiInput* source, const juc
 	{
 		//TODO: Check this : I assume here that we are sending multichannel too...
 		//m_midiOutput->sendMessageNow(message);
-		m_midiOutput->sendMessageNow(transformMidiMessage(message, b0, b1, b2));
+		//m_midiOutput->sendMessageNow(transformMidiMessage(message, b0, b1, b2));
+		sendMessage(transformMidiMessage(message, b0, b1, b2));
+	}
+}
+
+byte MainComponent::getByte(const juce::MidiMessage& message, const int offset) const
+{
+	if (offset >= message.getRawDataSize())
+	{
+		return 0;
+	}
+
+	const juce::uint8 *p = message.getRawData();
+	return static_cast<byte>(*(p + offset));
+}
+
+void MainComponent::sendMessage(const MidiMessage &message) const
+{
+	logThis2("sendMessage b0= %d, b1= %d, b2= %d & channel = %d", Target::midi, getByte(message, 0), getByte(message, 1), getByte(message, 2), message.getChannel());
+	m_midiOutput->sendMessageNow(message);
+}
+
+void MainComponent::sendPrelude() const
+{
+	std::vector<std::string> tokens = split(m_prelude, ";");
+	for (auto token : tokens)
+	{
+		sendMessage(MidiMessage(0xCC, 0x00, std::stoi(token, nullptr, 16)));
+		//m_midiOutput->sendMessageNow(MidiMessage(0xCC, 0x00, std::stoi(token, nullptr, 16)));
+	}
+}
+
+void MainComponent::sendPostlude() const
+{
+	std::vector<std::string> tokens = split(m_postlude, ";");
+	for (auto token : tokens)
+	{
+		//m_midiOutput->sendMessageNow(MidiMessage(0xCC, 0x00, std::stoi(token, nullptr, 16)));
+		sendMessage(MidiMessage(0xCC, 0x00, std::stoi(token, nullptr, 16)));
 	}
 }
 
@@ -619,11 +734,11 @@ void MainComponent::getAllOutputDimensions()
 	while (i < m_dimensionsOutput.size())
 	{
 		//logThis2("m_dimensionsOutput[%d] = %s", Target::misc, i, m_dimensionsOutput[i].c_str());
-		cboD1OutputCC.addItem(m_dimensionsOutput[i], i + 1);
-		cboD2OutputCC.addItem(m_dimensionsOutput[i], i + 1);
-		cboD3OutputCC.addItem(m_dimensionsOutput[i], i + 1);
-		cboD4OutputCC.addItem(m_dimensionsOutput[i], i + 1);
-		cboD5OutputCC.addItem(m_dimensionsOutput[i], i + 1);
+		cboD1OutputCC.addItem(m_dimensionsOutput[i] + "(" + m_dimensionsOutput[i + 1] + ")", i + 1);
+		cboD2OutputCC.addItem(m_dimensionsOutput[i] + "(" + m_dimensionsOutput[i + 1] + ")", i + 1);
+		cboD3OutputCC.addItem(m_dimensionsOutput[i] + "(" + m_dimensionsOutput[i + 1] + ")", i + 1);
+		cboD4OutputCC.addItem(m_dimensionsOutput[i] + "(" + m_dimensionsOutput[i + 1] + ")", i + 1);
+		cboD5OutputCC.addItem(m_dimensionsOutput[i] + "(" + m_dimensionsOutput[i + 1] + ")", i + 1);
 		i += 4;
 	}
 }
