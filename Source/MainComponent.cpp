@@ -60,6 +60,8 @@ MainComponent::MainComponent()
     btnStart.addListener(this);
     addAndMakeVisible(btnStart);
 
+	logThis("Session start 1", Target::misc);
+
     btnStop.setButtonText("Stop");
     btnStop.addListener(this);
     btnStop.setEnabled(false);
@@ -69,12 +71,16 @@ MainComponent::MainComponent()
     btnClose.addListener(this);
     addAndMakeVisible(btnClose);
 
+	logThis("Session start 2", Target::misc);
     getAllMidiDevices();
+	logThis("Session start 3", Target::misc);
 
     lblMidiInDevices.setText("Midi in devices", NotificationType::dontSendNotification);
     addAndMakeVisible(lblMidiInDevices);
     lblMidiOutDevices.setText("Midi out devices", NotificationType::dontSendNotification);
     addAndMakeVisible(lblMidiOutDevices);
+
+	logThis("Session start 4", Target::misc);
 
     cboMidiInDevices.addListener(this);
     addAndMakeVisible(cboMidiInDevices);
@@ -85,6 +91,8 @@ MainComponent::MainComponent()
     btnSetupSynth.addListener(this);
     btnSetupSynth.setEnabled(false);
     addAndMakeVisible(btnSetupSynth);
+
+	logThis("Session start 5", Target::misc);
 
     lblD1.setText("1", NotificationType::dontSendNotification);
     lblD2.setText("2", NotificationType::dontSendNotification);
@@ -111,8 +119,13 @@ MainComponent::MainComponent()
     lblOutputMaxCC.setText("Max", NotificationType::dontSendNotification);
     addAndMakeVisible(lblOutputMaxCC);
 
+	logThis("Session start 6", Target::misc);
+
     String filePath = File::getCurrentWorkingDirectory().getFullPathName();
     ConfigurationFile cf(filePath.toStdString() + "/GreenWitch.ini"); //TODO: Do something multiplatform about this slash...
+	// Seems to work anyway but in case the file is not present (artt least under Win) it hangs
+
+	logThis("Session start 7", Target::misc);
 
     txtD1InputCC.setText(cf.keyValue("mapping", "D1CC"), false);
     txtD1InputCC.addListener(this);
@@ -213,15 +226,21 @@ MainComponent::MainComponent()
 
     // Doesn't work as expected
     //resized();
+	
+	logThis("Session start 8", Target::misc);
 
     m_dimensionsOutput = split(cf.keyValue("mapping", "DxOutput"), ";");
     logThis2("DxOutput = %s", Target::misc, cf.keyValue("mapping", "DxOutput").c_str());
     for (size_t i = 0; i < m_dimensionsOutput.size(); i++)
     {
 		logThis2("m_dimensionsOutput[%d] = %s", Target::misc, i, m_dimensionsOutput[i].c_str());
+
+		logThis("Session start 9", Target::misc);
     }
 
+	logThis("Session start aa", Target::misc);
     getAllOutputDimensions();
+	logThis("Session start bb", Target::misc);
 }
 
 MainComponent::~MainComponent()
